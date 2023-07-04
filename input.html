@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Input de Vídeos</title>
+</head>
+<body>
+  <h1>Input de Vídeos</h1>
+  <form id="videoForm">
+    <label for="urlInput">URL do Vídeo do YouTube:</label>
+    <input type="text" id="urlInput" required>
+    <button type="submit">Salvar</button>
+  </form>
+
+  <script>
+    document.getElementById('videoForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const url = document.getElementById('urlInput').value;
+
+      try {
+        const response = await fetch('/videos', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ url })
+        });
+
+        if (response.ok) {
+          alert('Vídeo salvo com sucesso!');
+          document.getElementById('urlInput').value = '';
+        } else {
+          throw new Error('Erro ao salvar o vídeo.');
+        }
+      } catch (error) {
+        console.error('Erro ao salvar o vídeo:', error);
+        alert('Erro ao salvar o vídeo. Verifique o console para mais detalhes.');
+      }
+    });
+  </script>
+</body>
+</html>

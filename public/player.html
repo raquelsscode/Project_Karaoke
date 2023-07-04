@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- player.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reprodutor de Vídeos</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    
+    #player {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="player">
+    <iframe id="youtube-player" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="player.js"></script>
+</body>
+</html>
